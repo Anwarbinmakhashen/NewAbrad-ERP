@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewAbrad Account ERP | نيو ابراد</title>
+    <!-- Keeping Tailwind CDN for simplicity in migration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0f172a',
+              gold: {
+                DEFAULT: '#c9a744',
+                50: '#fbf8ea',
+                100: '#f5efcd',
+                200: '#ebdca0',
+                300: '#e0c26b',
+                400: '#c9a744',
+                500: '#b08d36',
+                600: '#946f2c',
+                700: '#765325',
+                800: '#624223',
+                900: '#533821',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+              arabic: ['Cairo', 'ui-sans-serif', 'system-ui'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Cairo', 'Inter', sans-serif;
+        background-color: #ffffff;
+        overflow: hidden;
+        user-select: none; /* Desktop app feel */
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c9a744; 
+      }
+
+      /* Print Styles */
+      @media print {
+        @page {
+          margin: 0;
+          size: auto;
+        }
+        body {
+          background-color: white !important;
+          overflow: visible !important;
+          height: auto !important;
+        }
+        #root {
+          display: block !important;
+        }
+        
+        /* Hide UI Elements */
+        nav, header, button, .no-print, input[type="text"] {
+          display: none !important;
+        }
+        
+        /* Content Reset */
+        main {
+          padding: 0 !important;
+          margin: 0 !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+        
+        /* Ensure tables break correctly */
+        table { page-break-inside: auto; }
+        tr { page-break-inside: avoid; page-break-after: auto; }
+        thead { display: table-header-group; }
+        tfoot { display: table-footer-group; }
+
+        /* Ensure content starts after header */
+        .print-content-padding {
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
