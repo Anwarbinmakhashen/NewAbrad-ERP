@@ -1,69 +1,57 @@
 {
   "name": "newabrad-erp",
-  "private": true,
   "version": "1.0.0",
-  "main": "electron/main.js",
-  "author": "Anwar Bin Makhashen",
-  "description": "NewAbrad ERP - Enterprise Resource Planning",
-  "homepage": "./",
+  "description": "Modern ERP system with React, TypeScript and Electron",
+  "main": "electron/electron-main.cjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
-    "dist": "npm run build && electron-builder"
+    "electron:dev": "concurrently -k \"npm run dev\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && electron-builder",
+    "electron:start": "electron .",
+    "dist": "npm run electron:build"
+  },
+  "keywords": [
+    "erp",
+    "react",
+    "typescript",
+    "electron",
+    "desktop"
+  ],
+  "author": "Anwarbinmakhashen",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "concurrently": "^8.2.2",
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.4",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "wait-on": "^7.0.1"
   },
   "build": {
     "appId": "com.newabrad.erp",
     "productName": "NewAbrad ERP",
-    "copyright": "Copyright © 2024 NewAbrad",
-    "asar": true,
+    "directories": {
+      "output": "dist-electron"
+    },
     "files": [
       "dist/**/*",
       "electron/**/*",
       "package.json"
     ],
-    "directories": {
-      "output": "release",
-      "buildResources": "build"
-    },
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": true,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "NewAbrad ERP",
-      "license": "license.html",
-      "deleteAppDataOnUninstall": false,
-      "runAfterFinish": true
-    }
-  },
-  "dependencies": {
-    "lucide-react": "^0.263.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "concurrently": "^8.2.0",
-    "cross-env": "^7.0.3",
-    "electron": "^25.3.0",
-    "electron-builder": "^24.6.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5",
-    "wait-on": "^7.0.1"
+    "extraResources": [
+      {
+        "from": "public",
+        "to": "public"
+      }
+    ]
   }
 }
